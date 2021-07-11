@@ -4,6 +4,7 @@ import RoomJoinPage from "./RoomJoinPage";
 import CreateRoomPage from "./CreateRoomPage";
 import Room from "./Room";
 import Home from "./Home";
+import Info from "./info";
 // import { Grid, Button, ButtonGroup, Typography } from "@material-ui/core";
 import {
   BrowserRouter as Router,
@@ -42,6 +43,7 @@ function HomePage(props) {
             }}
           />
           <Route path="/join" component={RoomJoinPage} />
+          <Route path="/info" component={Info} />
           <Route path="/create" component={CreateRoomPage} />
           <Route
             path="/room/:roomCode"
