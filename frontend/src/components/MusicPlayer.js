@@ -14,6 +14,14 @@ import SkipNextIcon from "@material-ui/icons/SkipNext";
 function MusicPlayer(props) {
   const songProgress = (props.time / props.duration) * 100;
 
+  function skipSong() {
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+    };
+    fetch("/spotify/skip", requestOptions);
+  }
+
   function pauseSong() {
     const requestOptions = {
       method: "PUT",
@@ -52,8 +60,9 @@ function MusicPlayer(props) {
             >
               {props.is_playing ? <PauseIcon /> : <PlayArrowIcon />}
             </IconButton>
-            <IconButton>
+            <IconButton onClick={() => skipSong()}>
               <SkipNextIcon />
+              {props.votes} / {props.votes_required}
             </IconButton>
           </div>
         </Grid>
