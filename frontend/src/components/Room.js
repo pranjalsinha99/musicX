@@ -16,7 +16,7 @@ function Room(props) {
 
   useEffect(() => {
     getRoomDetails();
-    const interval = setInterval(getCurrentSong, 1000);
+    const interval = setInterval(getCurrentSong, 500);
 
     return function cleanup() {
       clearInterval(interval);

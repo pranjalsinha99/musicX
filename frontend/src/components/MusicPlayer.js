@@ -10,6 +10,7 @@ import {
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import PauseIcon from "@material-ui/icons/Pause";
 import SkipNextIcon from "@material-ui/icons/SkipNext";
+import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
 
 function MusicPlayer(props) {
   const songProgress = (props.time / props.duration) * 100;
@@ -20,6 +21,14 @@ function MusicPlayer(props) {
       headers: { "Content-Type": "application/json" },
     };
     fetch("/spotify/skip", requestOptions);
+  }
+
+  function prevSong() {
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+    };
+    fetch("/spotify/prev", requestOptions);
   }
 
   function pauseSong() {
@@ -51,8 +60,10 @@ function MusicPlayer(props) {
           <Typography color="textSecondary" variant="subtitle1">
             {props.artist}
           </Typography>
-
           <div>
+            <IconButton onClick={() => prevSong()}>
+              <SkipPreviousIcon />
+            </IconButton>
             <IconButton
               onClick={() => {
                 props.is_playing ? pauseSong() : playSong();
@@ -62,8 +73,12 @@ function MusicPlayer(props) {
             </IconButton>
             <IconButton onClick={() => skipSong()}>
               <SkipNextIcon />
-              {props.votes} / {props.votes_required}
             </IconButton>
+          </div>
+          <div>
+            <h3>
+              Votes: {props.votes} / {props.votes_required}
+            </h3>
           </div>
         </Grid>
       </Grid>
