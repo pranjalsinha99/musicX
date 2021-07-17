@@ -7,3 +7,4 @@ spotify/__pycache__/views.cpython-38.pyc
 node_modules/
 __pycache__/
 **/node_modules
+db.sqlite3
