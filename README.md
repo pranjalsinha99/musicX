@@ -12,7 +12,7 @@ Run this command on a terminal to clone this app to your pc
 
 cd into the folder you created with the previous command by running,
 
-### `musicX`
+### `cd musicX`
 
 Install the required python dependencies by running
 
